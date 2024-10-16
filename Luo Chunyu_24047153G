@@ -1,0 +1,41 @@
+import random
+
+target_sentence = "GIO IS THE BEST"
+target_sentence_no_spaces = target_sentence.replace(" ", "").upper()
+
+def generate_letter_map():
+    alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+    shuffled_alphabet = list(alphabet)
+    random.shuffle(shuffled_alphabet)
+    return {letter: shuffled_letter for letter, shuffled_letter in zip(alphabet, shuffled_alphabet)}
+
+def convert_input(input_text, letter_map):
+    converted = []
+    for char in input_text.upper():
+        if char in letter_map:
+            converted.append(letter_map[char])
+        else:
+            converted.append(char) 
+    return ''.join(converted)
+
+
+def play_game():
+    letter_map = generate_letter_map()
+    
+    print("Welcome to the letter transformation game!")
+    print("Target sentence: 'GIO IS THE BEST'")
+    print("Type the correct sentence to win!")
+    
+    while True:
+        user_input = input("Type your sentence: ")
+        transformed_input = convert_input(user_input, letter_map)
+
+        if transformed_input.upper() == target_sentence_no_spaces:
+            print("Congratulations! You typed the correct sentence!")
+            break
+        else:
+            print(f"Incorrect! Your transformed input was: {transformed_input}")
+            print("Try again!")
+
+
+play_game()
