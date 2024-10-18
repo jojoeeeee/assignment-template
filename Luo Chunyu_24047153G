@@ -37,5 +37,5 @@ def play_game():
             print(f"Incorrect! Your transformed input was: {transformed_input}")
             print("Try again!")
 
-
+#run this game by tying python game.py
 play_game()
